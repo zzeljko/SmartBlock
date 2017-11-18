@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('blog.urls')),
     url(r'^login/$', auth_views.login, name='login'),
+    url(r'^$', auth_views.login, name='login'),
 ]
