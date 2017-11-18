@@ -11,24 +11,29 @@
 
 	<body>
 		 <div class="tab">
-		  <button class="tablinks" onclick="openCity(event, 'London')">London</button>
-		  <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
-		  <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+		  <button id="defaultSelected" class="tablinks" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
+		  <button class="tablinks" onclick="openTab(event, 'Utilities')">Utilities</button>
+		  <button class="tablinks" onclick="openTab(event, 'Other Info')">Other Info</button>
 		</div>
 
-		<div id="London" class="tabcontent">
-		  <h3>London</h3>
-		  <p>London is the capital city of England.</p>
+		<div id="Newsfeed" class="tabcontent">
+		  <h3>Newsfeed</h3>
+		  <p>See the news.</p>
+		</div>
+		
+		<script>
+			// Get the element with id="defaultOpen" and click on it
+			document.getElementById("defaultSelected").click();
+		</script>
+
+		<div id="Utilities" class="tabcontent">
+		  <h3>Utilities</h3>
+		  <p>Tabela intretinere.</p>
 		</div>
 
-		<div id="Paris" class="tabcontent">
-		  <h3>Paris</h3>
-		  <p>Paris is the capital of France.</p>
-		</div>
-
-		<div id="Tokyo" class="tabcontent">
-		  <h3>Tokyo</h3>
-		  <p>Tokyo is the capital of Japan.</p>
+		<div id="Other Info" class="tabcontent">
+		  <h3>Other Info</h3>
+		  <p>Other Info.</p>
 		</div> 
 	</body>
 </html>
