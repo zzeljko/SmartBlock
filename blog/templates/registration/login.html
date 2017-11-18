@@ -1,13 +1,11 @@
 {% extends 'blog/index.html' %}
 	{% block login %}
-		<div class="login-form">
-			{% block content %}
-			  <h2>Login</h2>
-			  <form method="post">
-			    {% csrf_token %}
-			    {{ form.as_p }}
-			    <button type="submit">Login</button>
-			  </form>
-			{% endblock %}
+		<div id="id1">
+			<h2>Login</h2>
+			<form method="post">
+				{% csrf_token %}
+				{{ form.as_p }}
+			    <button class="btn btn-primary" type="submit">Login</button>
+			</form>
 		</div>
 	{% endblock %}

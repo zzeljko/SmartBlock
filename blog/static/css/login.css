@@ -1,7 +1,22 @@
-.title {
-	color: 	red; // #8B008B;
+h1 {
+	font-size: 140px;
+  	text-align: center;
+	font-family: Helvetica, sans-serif;
+  	color:		#9400D3;
+  	letter-spacing: 4px;
+  	word-spacing: 10px;
+  	font-weight: bold;
+  	text-shadow: 
+  	-1px -1px 0 	#DA70D6,
+    -2px -2px 0 	#DA70D6,
+    -3px -3px 0 	#DA70D6,
+    -4px -4px 0 	#DA70D6;
 }
-.login-form {
-	height: 70%;
 
+#id1 {
+	display: block;
+	top: 0px;
+	left: 100px;
+	width: 50%;
+	height: 100%;
 }
