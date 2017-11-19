@@ -1,23 +1,54 @@
+@media all and (min-width: 50px)   {  body  { font-size:0.1em;  } }
+@media all and (min-width: 100px)  {  body  { font-size:0.2em;  } }
+@media all and (min-width: 200px)  {  body  { font-size:0.4em;  } }
+@media all and (min-width: 300px)  {  body  { font-size:0.6em;  } }
+@media all and (min-width: 400px)  {  body  { font-size:0.8em;  } }
+@media all and (min-width: 500px)  {  body  { font-size:1.0em;  } }
+@media all and (min-width: 600px)  {  body  { font-size:1.2em;  } }
+@media all and (min-width: 700px)  {  body  { font-size:1.4em;  } }
+@media all and (min-width: 800px)  {  body  { font-size:1.6em;  } }
+@media all and (min-width: 900px)  {  body  { font-size:1.8em;  } }
+@media all and (min-width: 1000px) {  body  { font-size:2.0em;  } }
+@media all and (min-width: 1100px) {  body  { font-size:2.2em;  } }
+@media all and (min-width: 1200px) {  body  { font-size:2.4em;  } }
+@media all and (min-width: 1300px) {  body  { font-size:2.6em;  } }
+@media all and (min-width: 1400px) {  body  { font-size:2.8em;  } }
+@media all and (min-width: 1500px) {  body  { font-size:3.0em;  } }
+@media all and (min-width: 1500px) {  body  { font-size:3.2em;  } }
+@media all and (min-width: 1600px) {  body  { font-size:3.4em;  } }
+@media all and (min-width: 1700px) {  body  { font-size:3.6em;  } }
+
+.niceTitle {
+	width: 100%;
+	height: 20%;
+}
+
 .niceTitle h1 {
-	font-size: 140px;
+	font-size: 400%;
   	text-align: center;
 	font-family: Helvetica, sans-serif;
   	color:		#9400D3;
-  	letter-spacing: 4px;
-  	word-spacing: 10px;
+  	letter-spacing: 1%;
+  	word-spacing: 3%;
   	font-weight: bold;
   	text-shadow: 
   	-1px -1px 0 	#DA70D6,
     -2px -2px 0 	#DA70D6,
     -3px -3px 0 	#DA70D6,
     -4px -4px 0 	#DA70D6;
-    z-index: 1; position:relative;
+    z-index: 1;
+    position:relative;
 }
 
 .contents {
 	background-image: url("../img/login_background.jpg");
 	width: 100%;
 	height: 100%;
+	min-width: 50%;
+	min-height: 50%;
+	max-width:100%;
+    max-height:100%;
+	overflow: scroll;
 }
 
 .right-login {
@@ -26,9 +57,10 @@
 	top: 0px;
 	left: 50%;
 	position:fixed;
+	min-width: 50%;
+	min-height: 50%;
 	max-width:100%;
     max-height:100%;
-    overflow:auto;
 }
 
 .left-login {
@@ -37,24 +69,31 @@
 	top: 0px;
 	left: 0px;
 	position:fixed;
+	min-width: 50%;
+	min-height: 50%;
 	max-width:100%;
     max-height:100%;
-    overflow:auto;
 }
 
 .img1 {
+	width: 50%;
+	height: 30%;
 	position: absolute;
 	top: 20%;
 	left: 5%;
 }
 
 .img2 {
+	width: 50%;
+	height: 30%;
 	position: absolute;
 	top: 40%;
 	left: 40%;
 }
 
 .img3 {
+	width: 50%;
+	height: 30%;
 	position: absolute;
 	top: 60%;
 	left: 5%;
@@ -68,20 +107,26 @@
     position:relative;
     left:25%;
     top:40%;
+}
 
+form {
+	min-width: 50%;
+	min-height: 50%;
+	max-width:100%;
+    max-height:100%;
 }
 
 form p label {
 	margin-top: 3%;
 	margin-left: 3%;
-	font-size: 200%;
+	font-size: 100%;
 }
 
 form p input {
 	width: 90%;
 	margin-left: 5%;
 	margin-right: 5%;
-	font-size: 200%;
+	font-size: 100%;
 	border-radius: 20px;
 }
 
@@ -93,16 +138,16 @@ form p input {
 	background-color: #DA70D6;
 	border: 1px solid #9400D3;
 	border-radius: 30%;
-	font-size: 30px;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	font-size: 80%;
+	padding-left: 5%;
+	padding-right: 5%;
+	padding-top: 2.5%;
+	padding-bottom: 2.5%;
 } 
 
 .login-button:hover {
 	border-radius: 30%;
 	border: 3px solid #9400D3;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-	font-size: 40px;
+	font-size: 100%;
 }
