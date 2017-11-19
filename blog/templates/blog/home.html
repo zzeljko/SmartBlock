@@ -3,14 +3,16 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="../../static/css/base.css">
-
+		
 		<script type="text/javascript" src="../../static/javascript/handle_tab.js">
 		</script>
 
 	</head>
 
 	<body>
-		 <div class="tab">
+		{% include "blog/title.html" %}
+
+		<div class="tab">
 		  <button id="defaultSelected" class="tablinks" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
 		  <button class="tablinks" onclick="openTab(event, 'Utilities')">Utilities</button>
 		  <button class="tablinks" onclick="openTab(event, 'Other Info')">Other Info</button>

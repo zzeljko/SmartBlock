@@ -3,16 +3,22 @@
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
+    table-layout: fixed;
+    width: 100%;
+    position: relative
 }
 
 /* Style the buttons inside the tab */
 .tab button {
+    width: 33%;
+    display: inline-block;
+    position: relative;
+    text-align: center;
     background-color: inherit;
-    float: left;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 14px 16px;*/
     transition: 0.3s;
 }
 
