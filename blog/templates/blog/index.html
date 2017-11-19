@@ -7,9 +7,12 @@
 		<link rel="stylesheet" href="../../static/css/login.css">
 		<title> SmartBlock </title>
 	</head>
-	<body>
+	<body class="contents">
 		{% include "blog/title.html" %}
-		{% block login %}
-		{% endblock %}
+		<p class="left-login images">IMAGES</p>
+		<div class="right-login">
+			{% block login %}
+			{% endblock %}
+		</div>
 	</body>
 </html>

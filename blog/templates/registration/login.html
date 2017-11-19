@@ -1,11 +1,12 @@
 {% extends 'blog/index.html' %}
+{% load staticfiles %}
 	{% block login %}
-		<div id="id1">
-			<h2>Login</h2>
+		<div class="center-vertically">
+			<h2 class="login">Login</h2>
 			<form method="post">
 				{% csrf_token %}
 				{{ form.as_p }}
-			    <button class="btn btn-primary" type="submit">Login</button>
+			    <button class="pull-right login-button" type="submit">Login</button>
 			</form>
 		</div>
 	{% endblock %}
