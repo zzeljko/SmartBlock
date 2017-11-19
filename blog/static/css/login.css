@@ -1,4 +1,4 @@
-h1 {
+.niceTitle h1 {
 	font-size: 140px;
   	text-align: center;
 	font-family: Helvetica, sans-serif;
@@ -11,6 +11,7 @@ h1 {
     -2px -2px 0 	#DA70D6,
     -3px -3px 0 	#DA70D6,
     -4px -4px 0 	#DA70D6;
+    z-index: 1; position:relative;
 }
 
 .contents {
@@ -23,13 +24,41 @@ h1 {
 	width: 50%;
 	height: 100%;
 	top: 0px;
-	left: 70%;
-	position:absolute;
+	left: 50%;
+	position:fixed;
 	max-width:100%;
     max-height:100%;
     overflow:auto;
 }
 
+.left-login {
+	width: 50%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	position:fixed;
+	max-width:100%;
+    max-height:100%;
+    overflow:auto;
+}
+
+.img1 {
+	position: absolute;
+	top: 20%;
+	left: 5%;
+}
+
+.img2 {
+	position: absolute;
+	top: 40%;
+	left: 40%;
+}
+
+.img3 {
+	position: absolute;
+	top: 60%;
+	left: 5%;
+}
 /*.center {
     position:absolute; it can be fixed too
     vertical-align: middle;
@@ -40,30 +69,52 @@ h1 {
     overflow:auto;
 }*/
 
-.center-vertically {
-	position: fixed;
-	top: 40%;
-	bottom: 0px;
+.center {
+	margin: 0px;
+    padding: 0px;
+	width: 50%;
+	height: 30%;
+    position:relative;
+    left:25%;
+    top:40%;
+
 }
 
-.login {
-	margin: 20px 20px;
-	text-align: center;
+form p label {
+	margin-top: 3%;
+	margin-left: 3%;
+	font-size: 200%;
+}
+
+form p input {
+	width: 90%;
+	margin-left: 5%;
+	margin-right: 5%;
+	font-size: 200%;
+	border-radius: 20px;
+}
+
+button {
+    margin: 5% auto;
 }
 
 .login-button {
+	text-align: center;
 	display: block;
-	margin: auto;
 	color: white;
 	background-color: #DA70D6;
 	border: 1px solid #9400D3;
-	border-radius: 40%;
-	font-size: 20px;
-}
+	border-radius: 30%;
+	font-size: 30px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+} 
 
 .login-button:hover {
-	border-radius: 60%;
+	border-radius: 30%;
 	border: 3px solid #9400D3;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-	font-size: 25px;
+	font-size: 40px;
 }
