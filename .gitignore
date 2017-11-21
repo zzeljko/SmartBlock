@@ -5,3 +5,4 @@ ioc_env
 myenv
 blog/__pycache__/urls.cpython-35.pyc
 blog/__pycache__/views.cpython-35.pyc
+db.sqlite3
