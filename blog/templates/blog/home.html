@@ -10,32 +10,34 @@
 	</head>
 
 	<body>
-		{% include "blog/title.html" %}
+		<div>
+			{% include "blog/title.html" %}
 
-		<div class="tab">
-		  <button id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
-		  <button onclick="openTab(event, 'Utilities')">Utilities</button>
-		  <button onclick="openTab(event, 'Other Info')">Other Info</button>
-		</div>
+			<div id ="tab" class="tab">
+				<button id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
+			  	<button onclick="openTab(event, 'Utilities')">Utilities</button>
+			  	<button id="other_info_btn" onclick="openTab(event, 'Other Info')">Other Info</button>
 
-		<div id="Newsfeed" class="tabcontent">
-		  <h3>Newsfeed</h3>
-		  <p>See the news.</p>
-		</div>
-		
-		<script>
-			// Get the element with id="defaultOpen" and click on it
-			document.getElementById("defaultSelected").click();
-		</script>
+				{% include "blog/newsfeed.html" %}
 
-		<div id="Utilities" class="tabcontent">
-		  <h3>Utilities</h3>
-		  <p>Tabela intretinere.</p>
-		</div>
+				<script>
+					// Get the element with id="defaultOpen" and click on it
+					document.getElementById("defaultSelected").click();
+				</script>
 
-		<div id="Other Info" class="tabcontent">
-		  <h3>Other Info</h3>
-		  <p>Other Info.</p>
+				<div id="Utilities" class="tabcontent">
+			  		<h3>Utilities</h3>
+			  		<p>Tabela intretinere.</p>
+				</div>
+
+				<div id="Other Info" class="tabcontent">
+			  		<h3>Other Info</h3>
+			  		<p>Other Info.</p>
+				</div>
+
+			</div>
+			
+
 		</div> 
 	</body>
 </html>
