@@ -2,40 +2,42 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" href="../../static/css/resize.css">
 		<link rel="stylesheet" href="../../static/css/base.css">
-		
 		<script type="text/javascript" src="../../static/javascript/handle_tab.js">
 		</script>
+		<link rel="stylesheet" href="../../static/css/background.css">
 
 	</head>
 
-	<body>
-		{% include "blog/title.html" %}
+	<body >
+		{% include "blog/title_for_home.html" %}
+		<div class="home_content">
+			<div class="tab">
+				<button id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
+				<button onclick="openTab(event, 'Utilities')">Utilities</button>
+				<button onclick="openTab(event, 'Other Info')">Other Info</button>
+			</div>
 
-		<div class="tab">
-		  <button id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
-		  <button onclick="openTab(event, 'Utilities')">Utilities</button>
-		  <button onclick="openTab(event, 'Other Info')">Other Info</button>
+			<div id="Newsfeed" class="tabcontent">
+				<h3>Newsfeed</h3>
+				<p>See the news.</p>
+			</div>
+			
+			<script>
+				// Get the element with id="defaultOpen" and click on it
+				document.getElementById("defaultSelected").click();
+			</script>
+
+			<div id="Utilities" class="tabcontent">
+				<h3>Utilities</h3>
+				<p>Tabela intretinere.</p>
+			</div>
+
+			<div id="Other Info" class="tabcontent">
+				<h3>Other Info</h3>
+				<p>Other Info.</p>
+			</div>
 		</div>
-
-		<div id="Newsfeed" class="tabcontent">
-		  <h3>Newsfeed</h3>
-		  <p>See the news.</p>
-		</div>
-		
-		<script>
-			// Get the element with id="defaultOpen" and click on it
-			document.getElementById("defaultSelected").click();
-		</script>
-
-		<div id="Utilities" class="tabcontent">
-		  <h3>Utilities</h3>
-		  <p>Tabela intretinere.</p>
-		</div>
-
-		<div id="Other Info" class="tabcontent">
-		  <h3>Other Info</h3>
-		  <p>Other Info.</p>
-		</div> 
 	</body>
 </html>
