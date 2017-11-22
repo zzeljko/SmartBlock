@@ -11,8 +11,13 @@
     max-height:100%;
 }
 
+.news_title {
+	font-size: 70%;
+	text-align: left;
+}
+
 .add_post_btn {
-	float: left;
+	float: right;
 }
 
 .add_post_form {
