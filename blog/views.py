@@ -9,3 +9,8 @@ def home_page(request):
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/')
 	return render(request, 'blog/home.html')
+
+def account_settings(request):
+	if not request.user.is_authenticated():
+		return HttpResponseRedirect('/')
+	return render(request, 'blog/account.html')
