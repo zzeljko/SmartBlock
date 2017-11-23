@@ -4,4 +4,4 @@ __pycache__
 ioc_env
 myenv
 db.sqlite3
-
+blog\static\img\Thumbs.db
