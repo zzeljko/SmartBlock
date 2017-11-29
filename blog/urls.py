@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns = [
     url(r'^home', views.home_page, name='home'),
-    url(r'^account', views.account_settings, name='account'),
+    # url(r'^newsfeed', views.newsfeed_post, name='newsfeed_post'),
 ]

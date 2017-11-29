@@ -1,3 +1,6 @@
+.home_content {
+    overflow: none;
+}
 /* Style the tab */
 .tab {
     margin-left: auto;
