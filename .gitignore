@@ -1,6 +1,6 @@
 *.pyc
 *~
-__pycache__
+blog/__pycache__
 ioc_env
 myenv
 db.sqlite3
