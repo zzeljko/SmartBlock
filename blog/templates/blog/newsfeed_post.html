@@ -1,0 +1,11 @@
+{% extends 'blog/newsfeed.html' %}
+
+{% load staticfiles %}
+	{% block newsfeed_post %}
+		<div>
+		<form method="POST" id="add_post_form" class="add_post_form">{% csrf_token %}
+        {{ form }}<textarea class="add_post_text_area" type="text" name="firstname" placeholder="Add your post here..." wrap="hard" rows="6" maxlength="500"></textarea>
+        	<input class="add_post_btn" type="submit" value="Add Post">
+		</form>
+		</div>
+	{% endblock %}

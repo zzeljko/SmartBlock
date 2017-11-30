@@ -4,18 +4,21 @@
 		<div id="News" class="news">
 			<p class="news_title">What's new?</p>
 			<div>
-				<form id="add_post_form" class="add_post_form">
-  					<textarea class="add_post_text_area" type="text" name="firstname" placeholder="Add your post here..." wrap="hard" rows="6" maxlength="500"></textarea>
-  				</form>
-  				<input class="add_post_btn" type="submit" value="Add Post">
+  				<form action="{% url 'home' %}" id="add_post_form" class="add_post_form" method="POST">{% csrf_token %}
+        			{{ form }}
+        			<input class="add_post_btn" type="submit" value="Add Post">
+				</form>
 			</div>
-
+			{% for post in post_list %}
+				<textarea class="newsfeed_post">{{ post.text }}</textarea>
+			{% endfor %}
 		</div>
 
 		<div id="Polls" class="polls">
 			<h3>Polls</h3>
 			<p>See the polls.</p>
 		</div>
+		<br style="clear:both;"/>
 	</div>
 </p>
 
