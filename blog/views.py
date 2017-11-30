@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from .forms import NewsPostForm
 from .models import NewsPost
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from .forms import KeyForm
 
 @login_required(login_url="/login/")
 def home_page(request):
+	if not request.user.is_authenticated():
+		return HttpResponseRedirect('/')
     """ Form logic for registering a new post """
     if request.method == "POST":
         form = NewsPostForm(request.POST)
@@ -16,3 +20,17 @@ def home_page(request):
     form = NewsPostForm()
     post_list = NewsPost.objects.all()
     return render(request, 'blog/home.html', {'form': form, 'post_list':post_list})
+
+@login_required(login_url="/login/")
+def my_profile(request):
+	# if not request.user.is_authenticated():
+	# 	return HttpResponseRedirect('/')
+	print ('aici')
+	if request.method == 'POST':
+		form = KeyForm(request.POST)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.save()
+	else:
+		form = KeyForm()
+	return render(request, 'blog/profile.html', {"form": form})

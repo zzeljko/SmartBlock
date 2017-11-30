@@ -1,16 +1,18 @@
 <link rel="stylesheet" href="../../static/css/meniu.css">
+<script type="text/javascript" src="../../static/javascript/profilePopup.js">
+</script>
 <div class="menu">
 	<h3>
-		Hello, username!
+		Hello, <span>{{user.username}}<span>!
 	</h3>
 	<h4>
 		Notification!
 	</h4>
 	<div class = "myAcc">
-		<a href="#profilePopup" class="myAccPopup">
-			<p class="myAccText">My Profile</p>		
+		<div id="idAccPopup" class="myAccPopup" onclick="openPopup()">
+			<p class="myAccText">My Profile</p>	
 			<img class="myAccImg" src="../../static/img/profile.png">
-		</a>
+		</div>
 	</div>
 
 	<div id="profilePopup" class="overlay">

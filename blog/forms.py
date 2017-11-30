@@ -1,6 +1,6 @@
 from django import forms
-
 from .models import NewsPost
+from .models import Post, Key
 
 class NewsPostForm(forms.ModelForm):
 
@@ -12,3 +12,10 @@ class NewsPostForm(forms.ModelForm):
         super(NewsPostForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs['placeholder'] = u'Add your post here...'
         self.fields['text'].widget.attrs['rows'] = 4
+
+
+class KeyForm(forms.ModelForm):
+
+	class Meta:
+		model = Key
+		fields = ('fuckYOU', 'name','owner',)

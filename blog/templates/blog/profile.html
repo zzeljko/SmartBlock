@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="../../static/css/profile.css">
 <div class="popupContent">
 	<img class="profileImage" src="../../static/img/profile.png">
-	<h1>Username</h1>
+	<h1>{{user.username}}</h1>
+	<form action="{%url 'myProfile'%}" method="POST">
+		{% csrf_token %}
+    	{{ form }}
+    	<input type="submit" value="Create"/>
+	</form>
 </div>
