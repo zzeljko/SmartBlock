@@ -9,17 +9,22 @@ from .forms import KeyForm
 def home_page(request):
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/')
-    """ Form logic for registering a new post """
-    if request.method == "POST":
-        form = NewsPostForm(request.POST)
+
+	form_class = NewsPostForm
+    # if request is not post, initialize an empty form
+	form = form_class(request.POST or None)
+	
+	""" Form logic for registering a new post """
+	if request.method == "POST":
+		form = NewsPostForm(request.POST)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
             post.save()
     
-    form = NewsPostForm()
-    post_list = NewsPost.objects.all()
-    return render(request, 'blog/home.html', {'form': form, 'post_list':post_list})
+	form = NewsPostForm()
+	post_list = NewsPost.objects.all()
+	return render(request, 'blog/home.html', {'form': form, 'post_list':post_list})
 
 @login_required(login_url="/login/")
 def my_profile(request):

@@ -1,6 +1,6 @@
 from django import forms
 from .models import NewsPost
-from .models import Post, Key
+from .models import Key
 
 class NewsPostForm(forms.ModelForm):
 
