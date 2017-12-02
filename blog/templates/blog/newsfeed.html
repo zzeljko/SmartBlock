@@ -10,7 +10,7 @@
 				</form>
 			</div>
 			{% for post in post_list %}
-				<textarea class="newsfeed_post">{{ post.text }}</textarea>
+				<textarea class="newsfeed_post">On {{ post.published_date }} {{ post.author }} said: {{ post.text }}</textarea>
 			{% endfor %}
 		</div>
 

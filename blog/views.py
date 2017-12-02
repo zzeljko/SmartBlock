@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import NewsPostForm
 from .models import NewsPost
 from django.shortcuts import render
+from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from .forms import KeyForm
 
@@ -21,6 +22,7 @@ def home_page(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
+            post.published_date = timezone.now()
             post.save()
     
 	form = NewsPostForm()
