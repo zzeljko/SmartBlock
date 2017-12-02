@@ -2,9 +2,9 @@
 <div class="popupContent">
 	<img class="profileImage" src="../../static/img/profile.png">
 	<h1>{{user.username}}</h1>
-	<form action="{%url 'myProfile'%}" method="POST">
+	<form action="{% url 'myProfile' %}" method="POST">
 		{% csrf_token %}
-    	{{ form }}
+    	{{ form_my_profile }}
     	<input type="submit" value="Create"/>
 	</form>
 </div>

@@ -38,4 +38,4 @@ def my_profile(request):
 			instance.save()
 	else:
 		form = KeyForm()
-	return render(request, 'blog/profile.html', {"form": form})
+	return render(request, 'blog/profile.html', {"form_my_profile": form})
