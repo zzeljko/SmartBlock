@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NewsPostForm
-from .models import NewsPost
+from .models import NewsPost, Key
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .forms import KeyForm
@@ -24,10 +24,11 @@ def home_page(request):
             post.save()
     
 	form = NewsPostForm()
+	keys_list = Key.objects.all()
 	post_list = NewsPost.objects.all()
 	form_my_profile = my_profile(request)
 	return render(request, 'blog/home.html', {'form' : form, 'form_my_profile' : form_my_profile,
-		'post_list' : post_list})
+		'post_list' : post_list, 'keys_list' : keys_list})
 
 def my_profile(request):
 
