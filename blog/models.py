@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from django.forms import ModelForm
 from django.contrib.auth.models  import User
 
@@ -11,7 +10,6 @@ class NewsPost(models.Model):
             blank=True, null=True)
 
     def publish(self):
-        self.published_date = timezone.now()
         self.save()
 
     def __str__(self):
