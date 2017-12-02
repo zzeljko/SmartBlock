@@ -35,6 +35,7 @@ class Key(models.Model):
     )
     fuckYOU = models.CharField(max_length=10)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='not at me')
+    
     def publish(self):
         self.save()
 

@@ -7,6 +7,7 @@ from .forms import KeyForm
 
 @login_required(login_url="/login/")
 def home_page(request):
+	
 	if not request.user.is_authenticated():
 		return HttpResponseRedirect('/')
 
@@ -24,18 +25,17 @@ def home_page(request):
     
 	form = NewsPostForm()
 	post_list = NewsPost.objects.all()
-	return render(request, 'blog/home.html', {'form': form, 'post_list':post_list})
+	form_my_profile = my_profile(request)
+	return render(request, 'blog/home.html', {'form' : form, 'form_my_profile' : form_my_profile,
+		'post_list' : post_list})
 
-@login_required(login_url="/login/")
 def my_profile(request):
-	# if not request.user.is_authenticated():
-	# 	return HttpResponseRedirect('/')
-	print ('aici')
+
 	if request.method == 'POST':
-		form = KeyForm(request.POST)
-		if form.is_valid():
-			instance = form.save(commit=False)
+		form_my_profile = KeyForm(request.POST)
+		if form_my_profile.is_valid():
+			instance = form_my_profile.save(commit=False)
 			instance.save()
 	else:
-		form = KeyForm()
-	return render(request, 'blog/profile.html', {"form_my_profile": form})
+		form_my_profile = KeyForm()
+	return form_my_profile
