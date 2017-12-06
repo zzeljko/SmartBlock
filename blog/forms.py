@@ -14,8 +14,8 @@ class NewsPostForm(forms.ModelForm):
         self.fields['text'].widget.attrs['rows'] = 4
 
 
-class KeyForm(forms.ModelForm):
+# class KeyForm(forms.ModelForm):
 
-	class Meta:
-		model = Key
-		fields = ('name','status',)
+# 	class Meta:
+# 		model = Key
+# 		fields = ('name','status',)

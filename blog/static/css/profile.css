@@ -5,12 +5,32 @@
 }
 
 .profileImage {
-	width: 20%;
-	height: 20%;
+	width: 15%;
+	height: 25%;
 }
 
 .popupContent h1 {
-	font-size: 90%;
+	font-size: 80%;
 	margin: 0;
 	padding: 0;
+}
+
+.popupContent .profileForm {
+	margin: 3%;
+	text-align: center;
+}
+
+.popupContent .keyProfile {
+	margin: 1%;
+	text-align: center;
+	font-size: 70%;
+}
+
+.popupContent .keyProfile input {
+	width: 20%;
+}
+
+.popupContent .keyProfile select {
+	height: 10%;
+	font-size: 120%;
 }
