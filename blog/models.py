@@ -31,7 +31,6 @@ class Key(models.Model):
         ('at me, not using it' , 'AT ME, NOT USING IT'),
         ('not at me' , 'NOT AT ME'),
     )
-    fuckYOU = models.CharField(max_length=10)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='not at me')
     
     def publish(self):
