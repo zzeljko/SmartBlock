@@ -21,9 +21,7 @@ def home_page(request):
 		if 'keyset' in request.POST :
 			for keyset in request.POST.getlist('keyset'):
 				query = keyset.split('-')
-				print query[1]
-				db_key = Key.objects.filter(name=query[0])
-				print db_key
+				# db_key = Key.objects.filter(name=query[0])
 				if query[1] == "not_at_me":
 					Key.objects.filter(name=query[0]).update(is_used = False)
 				elif query[1] == "at_me_not_using_it":

@@ -23,7 +23,6 @@
 			  	<button id="other_info_btn" onclick="openTab(event, 'Other Info')">Other Info</button>
 
 				{% include "blog/newsfeed.html" %}
-
 				<script>
 					// Get the element with id="defaultOpen" and click on it
 					document.getElementById("defaultSelected").click();
@@ -33,11 +32,7 @@
 			  		<h3>Utilities</h3>
 			  		<p>Tabela intretinere.</p>
 				</div>
-
-				<div id="Other Info" class="tabcontent">
-			  		<h3>Other Info</h3>
-			  		<p>Other Info.</p>
-				</div>
+				{% include "blog/other_info.html"%}
 
 			</div>
 			

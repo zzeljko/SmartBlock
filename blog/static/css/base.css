@@ -63,7 +63,7 @@ html, body {
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
+    /*display: none;*/
     padding: 0px 0px;
     border-top: none;
 }
