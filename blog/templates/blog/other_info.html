@@ -2,7 +2,9 @@
 <div id="Other Info" class="tabcontent">
 	<div class="other-info-contents">
 		<div class="top-left">
-			<p>TL</p>
+			{% for key in keys_list %}
+				<p>{{key.name}} @ {{key.owner}}</p>
+			{% endfor %}
 		</div>
 		<div class="top-right">
 			<p>TR</p>

@@ -20,23 +20,18 @@
 			<div id ="tab" class="tab">
 				<button id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
 			  	<button onclick="openTab(event, 'Utilities')">Utilities</button>
-			  	<button id="other_info_btn" onclick="openTab(event, 'Other Info')">Other Info</button>
-
-				{% include "blog/newsfeed.html" %}
-				<script>
-					// Get the element with id="defaultOpen" and click on it
-					document.getElementById("defaultSelected").click();
-				</script>
-
-				<div id="Utilities" class="tabcontent">
-			  		<h3>Utilities</h3>
-			  		<p>Tabela intretinere.</p>
-				</div>
-				{% include "blog/other_info.html"%}
-
+			  	<button onclick="openTab(event, 'Other Info')">Other Info</button>			
 			</div>
-			
-
+			{% include "blog/newsfeed.html" %}
+			<div id="Utilities" class="tabcontent">
+	  			<h3>Utilities</h3>
+	  			<p>Tabela intretinere.</p>
+			</div>
+			{% include "blog/other_info.html"%}
 		</div>
+		<script>
+			// Get the element with id="defaultOpen" and click on it
+			document.getElementById("defaultSelected").click();
+		</script>
 	</body> 
 </html>
