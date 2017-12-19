@@ -4,19 +4,21 @@ html, body {
 }
 
 .home_content {
+    width: 100%;
+    height: 100%;
     overflow: none;
 }
 /* Style the tab */
 .tab {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
- /*   border: 1px solid #ccc;*/
-    overflow:hidden;
+    overflow:   hidden;
     width: 100%;
-    height: 15%;
-    position:relative;  
+    height: 7vmin;
+    position:   relative;
+    display: inline-block;
 }
 
 /* Style the buttons inside the tab */
@@ -24,7 +26,7 @@ html, body {
     float: left;
     padding: 0.5%;
     margin: 0px;
-    font-size: 50%;
+    font-size: 2vmin;
     width: 33.33%;
     display: inline;
     position: relative;
@@ -53,7 +55,7 @@ html, body {
 
 /* Create an active/current tablink class */
 .tab button:active {
-    font-size: 80%;
+    font-size: 2.5vmin;
     font-weight: bold;
     background: -moz-radial-gradient(0 50%, circle, rgba(0,0,0,0) 1%, #959 1%);
     background: -webkit-radial-gradient(0 50%, circle, rgba(0,0,0,0) 1%, #959 1%);
@@ -63,9 +65,11 @@ html, body {
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
     padding: 0px 0px;
     border-top: none;
+    display: none;
+    width: 100%;
+    height: 100%;
 }
 
 .tabcontent {

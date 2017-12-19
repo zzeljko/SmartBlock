@@ -7,21 +7,21 @@
 		{% for key in keys_list %}
 			<div class="keyProfile">
 				<input type="text" value="{{ key.name }}" disabled="True">
-				<select>
+				<select name="keyset">
 					{% if key.owner == user %}
 						{% if key.is_used %}
-							<option value="not_at_me">Not at me</option>
-							<option value="at_me_using_it" selected>At me, using it</option>
-							<option value="at_me_not_using_it">At me, not using it</option>
+							<option name="keyset" value="{{ key.name }}-not_at_me" disabled>Not at me</option>
+							<option name="keyset" value="{{ key.name }}-at_me_using_it" selected>At me, using it</option>
+							<option name="keyset" value="{{ key.name }}-at_me_not_using_it">At me, not using it</option>
 						{% else %}
-						<option value="not_at_me">Not at me</option>
-						<option value="at_me_using_it" >At me, using it</option>
-						<option value="at_me_not_using_it" selected>At me, not using it</option>
+							<option name="keyset" value="{{ key.name }}-not_at_me" disabled>Not at me</option>
+							<option name="keyset" value="{{ key.name }}-at_me_using_it" >At me, using it</option>
+							<option name="keyset" value="{{ key.name }}-at_me_not_using_it" selected>At me, not using it</option>
 						{% endif %}
 					{% else %}
-						<option value="not_at_me" selected>Not at me</option>
-						<option value="at_me_using_it">At me, using it</option>
-						<option value="at_me_not_using_it">At me, not using it</option>
+						<option name="keyset" value="{{ key.name }}-not_at_me" selected disabled>Not at me</option>
+						<option name="keyset" value="{{ key.name }}-at_me_using_it">At me, using it</option>
+						<option name="keyset" value="{{ key.name }}-at_me_not_using_it">At me, not using it</option>
 					{% endif %}
 				</select>
 			</div>

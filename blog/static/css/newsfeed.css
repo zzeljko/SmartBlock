@@ -2,54 +2,88 @@
 	text-align: center;
 	width: 50%;
 	height: 75%;
-	top: 25%;
+	top: 0%;
 	left: 0%;
 	border:none;
 	min-width: 0%;
 	min-height: 50%;
 	max-width:50%;
     max-height:100%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     float: left;
-    position: fixed;
-    overflow-y: scroll;
+}
+
+.newsfeed_posts {
+	flex-grow: 2;
+	display: flex-block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+	margin-top: 2%;
+	overflow-y: scroll;
 }
 
 .newsfeed_post {
+	border: solid 1% black;
+	background-color: white;
+	font-size: 70%;
 	top: 5%;
-	width: 100%;
+	padding: 1% 2%;
+	margin: 1% 0;
+	width: 90%;
 }
 
 .news_title {
-	font-size: 70%;
+	flex-grow: 0;
+	font-size: 80%;
 	text-align: left;
 }
 
 .add_post_btn {
+	display: none;
+	flex-grow: 0;
+	font-size: 60%;
 	float: right;
 }
 
 .add_post_form {
+	flex-grow: 0;
 	width: 100%;
-	bottom: 10%;
+	display: inline-block;
 }
 
-.add_post_text_area {
-	width: 95%;
+.form-content {
+	flex-grow: 0;
+	font-size: 80%;
+	width: 100%;
 }
+
+.form-content textarea{
+    outline: none;
+	border-radius: 5%;
+	width: 90%;
+}
+
+.form-content textarea:focus{
+	border: 0.2vmin solid purple;
+	width: 90%;
+}
+
 
 .polls {
 	width: 50%;
 	height: 75%;
-	left: 50%;
-	top: 25%;
+	left: 0%;
+	top: 0%;
 	text-align: center;
 	border:none;
 	min-width: 0%;
 	min-height: 50%;
 	max-width:50%;
     max-height:100%;
-    display: inline-block;
-    position: fixed;
+    display: flex;
+    flex-direction: column;
+    float: left;
     overflow-y: scroll;
 }

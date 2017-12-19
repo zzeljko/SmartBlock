@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="../../static/css/other_info.css">
+<div id="Other Info" class="tabcontent">
+	<div class="other-info-contents">
+		<div class="top-left">
+			{% for key in keys_list %}
+				<p>{{key.name}} @ {{key.owner}}</p>
+			{% endfor %}
+		</div>
+		<div class="top-right">
+			<p>TR</p>
+		</div>
+
+		<div class="bottom-left">
+			<p>BL</p>
+		</div>
+		<div class="bottom-right">
+			<p>BR</p>
+		</div>	
+	</div>
+</div>
