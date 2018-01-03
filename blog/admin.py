@@ -1,10 +1,8 @@
 from django.contrib import admin
-
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.admin import UserAdmin
 from django import forms
-
-from .models import PollQuestion
+from .models import PollQuestion, PollChoice
 from .models import Key, User
 
 class UserCreationFormExtended(UserCreationForm):
@@ -48,6 +46,17 @@ class CustomUserAdmin(UserAdmin):
 class KeyAdmin(admin.ModelAdmin):
     fields = ('name','owner')
 
+class PollChoiceInline(admin.TabularInline):
+	model = PollChoice
+	fields = ('text', )
+	extra = 1
+
+class PollQuestionAdmin(admin.ModelAdmin):
+
+	inlines = [
+		PollChoiceInline,
+	]
+
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Key, KeyAdmin)
-admin.site.register(PollQuestion)
+admin.site.register(PollQuestion, PollQuestionAdmin)

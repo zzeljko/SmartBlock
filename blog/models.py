@@ -27,13 +27,6 @@ class NewsPost(models.Model):
     def __str__(self):
         return self.text
 
-class PollQuestion(models.Model):
-    question_text = models.CharField(max_length=200)
-    choice = models.CharField('Choice 1', max_length=200)
-
-    def __str__(self):
-        return self.question_text
-
 class Key(models.Model):
     name = models.CharField(max_length=20)
     owner = models.ForeignKey(settings.AUTH_USER_MODEL)
@@ -45,21 +38,23 @@ class Key(models.Model):
     def __str__(self):
         return self.name
 
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     is_administrator = models.NullBooleanField(default=False)
-#     is_president = models.NullBooleanField(default=False)
-#     is_in_executive_committee = models.NullBooleanField(default=False)
-#     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
-#     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
-#     email = models.EmailField(blank=True)
+class PollQuestion(models.Model):
+    question_text = models.CharField(max_length=200)  
+    due_date = models.DateTimeField(
+            blank=True, null=True)
 
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         Profile.objects.create(user=instance)
+    def __str__(self):
+        return self.question_text
 
-# @receiver(post_save, sender=User)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
+class PollChoice(models.Model):
+    poll_question = models.ForeignKey(PollQuestion, on_delete=models.CASCADE)
+    text = models.CharField('Choice', max_length=200)
+    number_of_votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.text
+
+class Vote(models.Model):
+    poll_choice = models.ForeignKey(PollChoice)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
