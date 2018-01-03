@@ -1,9 +1,21 @@
 from django.db import models
+from django.conf import settings
 from django.forms import ModelForm
-from django.contrib.auth.models  import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.core.validators import RegexValidator, EmailValidator
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+	is_administrator = models.BooleanField(default=False)
+	is_president = models.BooleanField(default=False)
+	is_in_executive_committee = models.BooleanField(default=False)
+	phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number must be entered in the format: '+999999999'. Up to 15 digits allowed.")
+	phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=True)
+	email = models.EmailField(blank=True)
 
 class NewsPost(models.Model):
-    author = models.ForeignKey('auth.User')
+    author = models.ForeignKey(settings.AUTH_USER_MODEL)
     text = models.TextField('', max_length=200)
 
     published_date = models.DateTimeField(
@@ -15,9 +27,19 @@ class NewsPost(models.Model):
     def __str__(self):
         return self.text
 
-class PollQuestion(models.Model):
-    question_text = models.CharField(max_length=200)
+class Key(models.Model):
+    name = models.CharField(max_length=20)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL)
+    is_used = models.BooleanField(default=False)
     
+    def publish(self):
+        self.save()
+
+    def __str__(self):
+        return self.name
+
+class PollQuestion(models.Model):
+    question_text = models.CharField(max_length=200)  
     due_date = models.DateTimeField(
             blank=True, null=True)
 
@@ -32,24 +54,7 @@ class PollChoice(models.Model):
     def __str__(self):
         return self.text
 
-# TODO: tabela Voters
-class Votes(models.Model):
+class Vote(models.Model):
     poll_choice = models.ForeignKey(PollChoice)
-    user = models.ForeignKey('auth.User')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL)
 
-class Key(models.Model):
-    name = models.CharField(max_length=20)
-    owner = models.ForeignKey('auth.User')
-    is_used = models.BooleanField(default=False)
-    # STATUS_CHOICES = (
-    #     ('at me, using it' , 'AT ME, USING IT'),
-    #     ('at me, not using it' , 'AT ME, NOT USING IT'),
-    #     ('not at me' , 'NOT AT ME'),
-    # )
-    # status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='not at me')
-    
-    def publish(self):
-        self.save()
-
-    def __str__(self):
-        return self.name

@@ -96,9 +96,11 @@
     outline: none;
 	border-radius: 5%;
 	width: 90%;
+	resize: none;
 }
 
 .form-content textarea:focus{
 	border: 0.2vmin solid purple;
 	width: 90%;
+	resize: none;
 }

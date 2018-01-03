@@ -12,10 +12,3 @@ class NewsPostForm(forms.ModelForm):
         super(NewsPostForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs['placeholder'] = u'Add your post here...'
         self.fields['text'].widget.attrs['rows'] = 1
-
-
-# class KeyForm(forms.ModelForm):
-
-# 	class Meta:
-# 		model = Key
-# 		fields = ('name','status',)
