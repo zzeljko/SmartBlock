@@ -17,10 +17,25 @@ class NewsPost(models.Model):
 
 class PollQuestion(models.Model):
     question_text = models.CharField(max_length=200)
-    choice = models.CharField('Choice 1', max_length=200)
+    
+    due_date = models.DateTimeField(
+            blank=True, null=True)
 
     def __str__(self):
         return self.question_text
+
+class PollChoice(models.Model):
+    poll_question = models.ForeignKey(PollQuestion, on_delete=models.CASCADE)
+    text = models.CharField('Choice', max_length=200)
+    number_of_votes = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.text
+
+# TODO: tabela Voters
+class Votes(models.Model):
+    poll_choice = models.ForeignKey(PollChoice)
+    user = models.ForeignKey('auth.User')
 
 class Key(models.Model):
     name = models.CharField(max_length=20)

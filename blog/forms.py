@@ -11,7 +11,7 @@ class NewsPostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):          
         super(NewsPostForm, self).__init__(*args, **kwargs)
         self.fields['text'].widget.attrs['placeholder'] = u'Add your post here...'
-        self.fields['text'].widget.attrs['rows'] = 4
+        self.fields['text'].widget.attrs['rows'] = 1
 
 
 # class KeyForm(forms.ModelForm):
