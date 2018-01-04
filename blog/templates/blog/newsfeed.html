@@ -17,10 +17,10 @@
 				{% for post in post_list %}
 					<div class="newsfeed_post">
 						<div class="post_header">
-							On {{ post.published_date }} {{ post.author }} said:
+							<h5>On {{ post.published_date }} <span style="font-weight: bold">{{ post.author }}</span> said:</h5>
 						</div>
 						<div class="post_content">
-							 {{ post.text }}
+							<p>{{ post.text }}</p>
 						</div>
 					</div>
 				{% endfor %}
