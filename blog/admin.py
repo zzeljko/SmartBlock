@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.admin import UserAdmin
 from django import forms
 from .models import PollQuestion, PollChoice
-from .models import Key, User
+from .models import Key, User, ImportantDate, OtherImportantContact
 
 class UserCreationFormExtended(UserCreationForm):
     """A form for creating new users. Includes all the required
@@ -60,3 +60,5 @@ class PollQuestionAdmin(admin.ModelAdmin):
 admin.site.register(User, CustomUserAdmin)
 admin.site.register(Key, KeyAdmin)
 admin.site.register(PollQuestion, PollQuestionAdmin)
+admin.site.register(ImportantDate)
+admin.site.register(OtherImportantContact)

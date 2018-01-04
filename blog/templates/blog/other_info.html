@@ -2,19 +2,29 @@
 <div id="Other Info" class="tabcontent">
 	<div class="other-info-contents">
 		<div class="top-left">
+			<h3>Locatia cheilor de la spatiile comune</h3>
 			{% for key in keys_list %}
 				<p>{{key.name}} @ {{key.owner}}</p>
 			{% endfor %}
 		</div>
 		<div class="top-right">
-			<p>TR</p>
+			<h3>Date importante pentru locatari</h3>
+			{% for date in important_dates %}
+				<p>{{date.description}} pana la {{date.monthly_due_date}} ale lunii</p>
+			{% endfor %}
 		</div>
 
 		<div class="bottom-left">
-			<p>BL</p>
+			<h3>Contact personal bloc</h3>
+			{% for staff in block_staff %}
+				<p>{{staff}} {{staff.phone_number}} {{staff.email}}</p>
+			{% endfor %}
 		</div>
 		<div class="bottom-right">
-			<p>BR</p>
+			<h3>Alte contacte importante</h3>
+			{% for contact in other_important_contacts %}
+				<p>{{contact}} {{contact.phone_number}} {{contact.email}}</p>
+			{% endfor %}
 		</div>	
 	</div>
 </div>

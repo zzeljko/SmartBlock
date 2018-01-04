@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from .forms import NewsPostForm
-from .models import NewsPost, Key, PollQuestion, PollChoice, Vote
+from .models import NewsPost, Key, PollQuestion, PollChoice, Vote, ImportantDate, OtherImportantContact
 from django.shortcuts import render
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.db.models import F
+from django.db.models import Q
 from .models import User
 
 @login_required(login_url="/login/")
@@ -62,8 +63,15 @@ def home_page(request):
 		voted_choices.append(vote.poll_choice)
 		freezed_questions.append(vote.poll_choice.poll_question)
 
-	number_of_users = len(User.objects.all())
+	users = User.objects.all()
+	number_of_users = len(users)
+	block_staff = users.filter(Q(is_administrator=True) | Q(is_president=True))
+
+	important_dates = ImportantDate.objects.all()
+	other_important_contacts = OtherImportantContact.objects.all()
+
 	return render(request, 'blog/home.html', {'form' : form,
 		'post_list' : post_list, 'poll_dict' : poll_dict, 'keys_list' : keys_list, 
 		'freezed_questions' : freezed_questions, 'voted_choices' : voted_choices, 
-		'number_of_users' : number_of_users})
+		'number_of_users' : number_of_users, 'important_dates' : important_dates,
+		'block_staff' : block_staff, 'other_important_contacts' : other_important_contacts})
