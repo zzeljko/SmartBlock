@@ -9,18 +9,20 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="../../static/css/resize.css">
-		<link rel="stylesheet" href="../../static/css/base.css">
+		<link rel="stylesheet" href="../../static/css/home.css">
 		<link rel="stylesheet" href="../../static/css/background.css">
 	</head>
 
 	<body>
 		<div class="home_content">
 			{% include "blog/title_for_home.html" %}
-			{% include "blog/menu.html" %}
-			<div id ="tab" class="tab">
-				<button id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
-			  	<button onclick="openTab(event, 'Utilities')">Utilities</button>
-			  	<button onclick="openTab(event, 'Other Info')">Other Info</button>			
+			<div class="home_header tab">
+				{% include "blog/menu.html" %}
+				<!--  <div id ="tab" class="tab">-->
+					<button class="tablink" id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
+				  	<button class="tablink" onclick="openTab(event, 'Utilities')">Utilities</button>
+				  	<button class="tablink" onclick="openTab(event, 'Other Info')">Other Info</button>			
+				<!-- </div> -->
 			</div>
 			{% include "blog/newsfeed.html" %}
 			<div id="Utilities" class="tabcontent">

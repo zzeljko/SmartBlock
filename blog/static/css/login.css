@@ -32,28 +32,13 @@
     max-height:100%;
 }
 
-.img1 {
-	width: 53%;
-	height: 30%;
-	position: absolute;
-	top: 18%;
-	left: 5%;
-}
-
-.img2 {
-	width: 47%;
-	height: 28%;
-	position: absolute;
-	top: 41%;
-	left: 43%;
-}
-
-.img3 {
-	width: 50%;
-	height: 25%;
-	position: absolute;
-	top: 65%;
-	left: 5%;
+.logo_img {
+	position: fixed;
+	display: block;
+	top: 40%;
+	left:15%;
+	height: 40%;
+	width: 30%;
 }
 
 .center {
@@ -66,35 +51,46 @@
     top:40%;
 }
 
-form {
-	min-width: 50%;
-	min-height: 50%;
-	max-width:100%;
-    max-height:100%;
+.form_content {
+	background-color: #BBDEFB;
+	border: 2px solid #004C8C;
+	border-radius: 5%;
+	padding-bottom: 10px;
+	padding-top: 10px;
 }
 
-form p label {
-	margin-top: 3%;
-	margin-left: 3%;
-	font-size: 100%;
+.form_content p label {
+	display: none;
 }
 
-form p input {
+.form_content p input {
 	width: 90%;
+	height: 5%;
+	margin-bottom: 5%;
 	margin-left: 5%;
 	margin-right: 5%;
-	font-size: 100%;
+	font-size: 80%;
 	border-radius: 20px;
+	color: #1A237E;
 }
+
+.form_content p input:placeholder {
+	color: #004C8C;
+	margin-top: 3%;
+	margin-left: 3%;
+	font-size: 80%;
+	opacity: 0.8;
+}
+
 
 .login-button {
 	text-align: center;
 	display: block;
-	color: white;
+	color: #0277BD;
 	margin: 5% auto;
-	background-color: #DA70D6;
-	border: 1px solid #9400D3;
-	border-radius: 30%;
+	background-color: #BBDEFB;
+	border: 1px solid #004C8C;
+	border-radius: 15%;
 	font-size: 80%;
 	padding-left: 5%;
 	padding-right: 5%;
@@ -103,8 +99,15 @@ form p input {
 } 
 
 .login-button:hover {
-	border-radius: 30%;
-	border: 3px solid #9400D3;
+	border: 3px solid #004C8C;
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 	font-size: 100%;
+}
+
+.login_profile_img {
+	height: 30%;
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
 }

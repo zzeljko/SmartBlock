@@ -2,10 +2,13 @@
 {% load staticfiles %}
 	{% block login %}
 		<div class="center">
-			<form class="form" method="post">
+			<form method="post">
 				{% csrf_token %}
-				{{ form.as_p }}
-			    <button class="login-button" type="submit">Login</button>
+				<div class="form_content">
+					<img class="login_profile_img" src="../../static/img/profile.png">
+					{{ form.as_p }}
+				</div>
+				<button class="login-button" type="submit">Login</button>
 			</form>
 		</div>
 	{% endblock %}
