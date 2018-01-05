@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import F
 from django.db.models import Q
 from .models import User
+from django.http import HttpResponse
+from sets import Set
 
 @login_required(login_url="/login/")
 def home_page(request):
@@ -20,6 +22,7 @@ def home_page(request):
 	
 	""" Form logic for registering a new post """
 	if request.method == "POST":
+
 		if 'keyset' in request.POST:
 			for keyset in request.POST.getlist('keyset'):
 				query = keyset.split('-')

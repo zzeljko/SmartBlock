@@ -1,3 +1,5 @@
+<script type="text/javascript" src="../../static/javascript/enable_vote_button.js"></script>
+
 {% load mathfilters %}
 <link rel="stylesheet" href="../../static/css/newsfeed.css">
 <p>
@@ -79,14 +81,18 @@
 							</div>
 							<div class="newsfeed_and_poll_post_content">
 								<p class="wrapword">{{poll_question.question_text}}</p>
-								<div class="poll_choices">
-									{% for choice in poll_choices %}
-										<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}}
-										<br>
-									{% endfor %}
-									<span style="float: right">
-										<input class="poll_vote_btn" type="submit" name="submit_poll_answer" value="Vote">
-									</span>
+								<div class="poll_choices_container">
+									<div class="poll_choices">
+										{% for choice in poll_choices %}
+											<input type="radio" name="choice" value="{{choice.id}}"
+											onchange="enableButton(event, '{{forloop.parentloop.counter}}')"> {{choice.text}}
+											<br>
+										{% endfor %}
+									</div>
+
+									<div class="poll_vote_btn_format">
+										<input id="submit_vote_{{forloop.counter}}" class="poll_vote_btn" type="submit" name="submit_poll_answer" value="Vote" disabled>
+									</div>
 								</div>
 							</div>
 						</form>
