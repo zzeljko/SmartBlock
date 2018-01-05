@@ -79,14 +79,16 @@
 							</div>
 							<div class="newsfeed_and_poll_post_content">
 								<p class="wrapword">{{poll_question.question_text}}</p>
-								<div class="poll_choices">
-									{% for choice in poll_choices %}
-										<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}}
-										<br>
-									{% endfor %}
-								</div>
-								<div class="poll_vote_btn_format">
-									<input class="poll_vote_btn" type="submit" name="submit_poll_answer" value="Vote">
+								<div class="poll_choices_container">
+									<div class="poll_choices">
+										{% for choice in poll_choices %}
+											<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}}
+											<br>
+										{% endfor %}
+									</div>
+									<div class="poll_vote_btn_format">
+										<input class="poll_vote_btn" type="submit" name="submit_poll_answer" value="Vote">
+									</div>
 								</div>
 							</div>
 						</form>

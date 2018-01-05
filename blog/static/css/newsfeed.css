@@ -102,7 +102,6 @@
 .newsfeed_and_poll_post_content {
 	margin: 0;
 	padding: 0;
-	display: inline;
 	text-align: left;
 }
 
@@ -111,26 +110,36 @@
 	color: #004C8C;
 }
 
+.poll_choices_container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+    align-items: center;}
+
 .poll_choices {
+	float: left;
 	width: 65%;
 	padding: 1% 1% 0.5% 3%;
 	color: #004C8C;
 }
 
+.poll_choices_container .poll_choices {
+	width: 55%;
+}
+
 .poll_vote_btn_format {
 	float: right;
-	width: 20%;
+	width: 30%;
 }
 
 .poll_vote_btn {
-	float: right;
-	font-size: 100%;
+	font-size: 125%;
 	color: #0277BD;
 	margin: 1% auto;
 	background-color: #BBDEFB;
 	border: 1px solid #004C8C;
 	border-radius: 15%;
-	padding: 0.5% 1.5%;
+	padding: 1% 3%;
 }
 
 .poll_vote_btn:hover {
