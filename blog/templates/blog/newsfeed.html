@@ -13,14 +13,14 @@
 				</div>
 			</form>
 
-			<div class="newsfeed_posts">
+			<div class="newsfeed_and_poll_posts">
 				{% for post in post_list %}
-					<div class="newsfeed_post">
-						<div class="post_header">
+					<div class="newsfeed_and_poll_post">
+						<div class="newsfeed_and_poll_post_header">
 							<h5>On {{ post.published_date }} <span style="font-weight: bold">{{ post.author }}</span> said:</h5>
 						</div>
-						<div class="post_content">
-							<p>{{ post.text }}</p>
+						<div class="newsfeed_and_poll_post_content">
+							<p class="wrapword">{{post.text}}</p>
 						</div>
 					</div>
 				{% endfor %}
@@ -28,46 +28,67 @@
 		</div>
 
 		<div id="Polls" class="polls">
-			<div class="poll_posts">
+			<div class="newsfeed_and_poll_posts">
 				{% for poll_question, poll_choices in poll_dict.items %}
 					{% if poll_question in freezed_questions %}
-					<form class="poll_post" method="POST">
+					<form class="newsfeed_and_poll_post" method="POST">
 						<fieldset disabled>
 							{% csrf_token %}
-							<div>
-								Until {{ poll_question.due_date }} you should answer to the following poll: <br>
-								<br>
+							<div class="newsfeed_and_poll_post_header">
+								<h5>
+									Until <span style="font-weight: bold">{{ poll_question.due_date }}</span> you should answer to the following poll:
+								</h5>
 							</div>
-
-							{{poll_question.question_text}} <br>
-							<br>
-							{% for choice in poll_choices %}
-								{% if choice in voted_choices %}
-									<input type="radio" name="choice" value="{{choice.id}}" checked> {{choice.text}} {{ choice.number_of_votes|div:number_of_users|mul:100 }}% 
-								{% else %}
-									<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}} {{ choice.number_of_votes|div:number_of_users|mul:100 }}%
-								{% endif %}
-								<br>
-								<br>
-							{% endfor %}
-							<input type="submit" name="submit_poll_answer" value="Submit">
+							<div class="newsfeed_and_poll_post_content">
+								<p class="wrapword">{{poll_question.question_text}}</p>
+								<div class="poll_choices">
+									{% for choice in poll_choices %}
+										{% if choice in voted_choices %}
+											<input type="radio" name="choice" value="{{choice.id}}" checked>
+											<span style="font-weight: bold">
+												<span class="choice_text">
+													{{choice.text}}
+												</span>
+												<span style="float: right" class="choice_procent">
+													{{choice.number_of_votes|div:number_of_users|mul:100}}%
+												</span>
+											</span>
+											<br>
+										{% else %}
+											<input type="radio" name="choice" value="{{choice.id}}">
+											<span class="choice_text">
+												{{choice.text}}
+											</span>
+											<span style="float: right" class="choice_procent">
+												{{choice.number_of_votes|div:number_of_users|mul:100}}%
+											</span>
+											<br>
+										{% endif %}
+									{% endfor %}
+								</div>
+							</div>
 						</fieldset>
 					</form>
 					{% else %}
-						<form class="poll_post" method="POST">
+						<form class="newsfeed_and_poll_post" method="POST">
 							{% csrf_token %}
-							<div>
-								Until {{ poll_question.due_date }} you should answer to the following poll: <br>
-								<br>
+							<div class="newsfeed_and_poll_post_header">
+								<h5>
+									Until <span style="font-weight: bold">{{ poll_question.due_date }}</span> you should answer to the following poll:
+								</h5>
 							</div>
-
-							{{poll_question.question_text}} <br>
-							<br>
-							{% for choice in poll_choices %}
-								<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}} <br>						
-								<br>
-							{% endfor %}
-							<input type="submit" name="submit_poll_answer" value="Submit">
+							<div class="newsfeed_and_poll_post_content">
+								<p class="wrapword">{{poll_question.question_text}}</p>
+								<div class="poll_choices">
+									{% for choice in poll_choices %}
+										<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}}
+										<br>
+									{% endfor %}
+								</div>
+								<div class="poll_vote_btn_format">
+									<input class="poll_vote_btn" type="submit" name="submit_poll_answer" value="Vote">
+								</div>
+							</div>
 						</form>
 					{% endif %}
 				{% endfor %}
