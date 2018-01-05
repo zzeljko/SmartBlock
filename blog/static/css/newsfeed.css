@@ -1,8 +1,8 @@
 .news {
 	text-align: center;
 	width: 50%;
-	height: 75%;
-	top: 0%;
+	height: 70%;
+	top: 0;
 	left: 0%;
     display: flex;
     flex-direction: column;
@@ -11,10 +11,9 @@
 
 .polls {
 	width: 50%;
-	height: 75%;
+	height: 70%;
 	top: 0%;
 	left: 0%;
-	border:none;
     display: flex;
     flex-direction: column;
 }

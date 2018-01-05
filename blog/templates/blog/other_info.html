@@ -2,29 +2,50 @@
 <div id="Other Info" class="tabcontent">
 	<div class="other-info-contents">
 		<div class="top-left">
-			<h3>Locatia cheilor de la spatiile comune</h3>
+			<button id="key_btn" onmouseover="mouseOver(id,'key_info')">Locatia cheilor de la spatiile comune</button>
+			<!-- <h3>Locatia cheilor de la spatiile comune</h3> -->
+			<div id="key_info" class="" onmouseleave="mouseOut(id,'key_btn')">
 			{% for key in keys_list %}
 				<p>{{key.name}} @ {{key.owner}}</p>
 			{% endfor %}
+			</div>
 		</div>
 		<div class="top-right">
-			<h3>Date importante pentru locatari</h3>
-			{% for date in important_dates %}
-				<p>{{date.description}} pana la {{date.monthly_due_date}} ale lunii</p>
-			{% endfor %}
+			<button id="imp_dates_btn" onmouseover="mouseOver(id,'imp_dates_info')">Date importante pentru locatari</button>
+			<div id="imp_dates_info" class="" onmouseleave="mouseOut(id,'imp_dates_btn')">
+				{% for date in important_dates %}
+					<p>{{date.description}} pana la {{date.monthly_due_date}} ale lunii</p>
+				{% endfor %}
+			</div>
 		</div>
 
 		<div class="bottom-left">
-			<h3>Contact personal bloc</h3>
-			{% for staff in block_staff %}
-				<p>{{staff}} {{staff.phone_number}} {{staff.email}}</p>
-			{% endfor %}
+			<button id="imp_contact_btn" onmouseover="mouseOver(id,'imp_contact_info')">Contact personal bloc</button>
+			<div id="imp_contact_info" class="" onmouseleave="mouseOut(id,'imp_contact_btn')">
+				{% for staff in block_staff %}
+					<p>{{staff}} {{staff.phone_number}} {{staff.email}}</p>
+				{% endfor %}
+			</div>
 		</div>
 		<div class="bottom-right">
-			<h3>Alte contacte importante</h3>
-			{% for contact in other_important_contacts %}
-				<p>{{contact}} {{contact.phone_number}} {{contact.email}}</p>
-			{% endfor %}
+			<button id="other_contact_btn" onmouseover="mouseOver(id,'other_contact_info')">Alte contacte importante</button>
+			<div id="other_contact_info" class="" onmouseleave="mouseOut(id,'other_contact_btn')">
+				{% for contact in other_important_contacts %}
+					<p>{{contact}} {{contact.phone_number}} {{contact.email}}</p>
+				{% endfor %}
+			</div>
 		</div>	
+		<script>
+			function mouseOver(id_source, id_target) {
+    			document.getElementById(id_source).style.display = "none";
+    			document.getElementById(id_target).style.display = "flex";
+    			document.getElementById(id_target).style.backgroundColor = "#58A5F0";
+    			document.getElementById(id_target).style.color = "#E8EAF6";
+			}
+			function mouseOut(id_source, id_target) {
+    			document.getElementById(id_source).style.display = "none";
+    			document.getElementById(id_target).style.display = "block";
+			}
+		</script>
 	</div>
 </div>

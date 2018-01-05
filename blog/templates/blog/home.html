@@ -12,23 +12,20 @@
 		<link rel="stylesheet" href="../../static/css/home.css">
 		<link rel="stylesheet" href="../../static/css/background.css">
 	</head>
-
 	<body>
 		<div class="home_content">
 			{% include "blog/title_for_home.html" %}
 			<div class="home_header tab">
 				{% include "blog/menu.html" %}
-				<!--  <div id ="tab" class="tab">-->
-					<button class="tablink" id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
-				  	<button class="tablink" onclick="openTab(event, 'Utilities')">Utilities</button>
-				  	<button class="tablink" onclick="openTab(event, 'Other Info')">Other Info</button>			
-				<!-- </div> -->
+				<button class="tablink" id="defaultSelected" onclick="openTab(event, 'Newsfeed')">Newsfeed</button>
+				<button class="tablink" onclick="openTab(event, 'Utilities')">Utilities</button>
+				<button class="tablink" onclick="openTab(event, 'Other Info')">Other Info</button>			
 			</div>
 			{% include "blog/newsfeed.html" %}
-			<div id="Utilities" class="tabcontent">
+			<!-- <div id="Utilities" class="tabcontent">
 	  			<h3>Utilities</h3>
 	  			<p>Tabela intretinere.</p>
-			</div>
+			</div> -->
 			{% include "blog/other_info.html"%}
 		</div>
 		<script>

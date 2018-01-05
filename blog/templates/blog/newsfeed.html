@@ -1,115 +1,110 @@
 {% load mathfilters %}
 <link rel="stylesheet" href="../../static/css/newsfeed.css">
-<p>
-	<div id="Newsfeed" class="tabcontent">
-		<div id="News" class="news">
-			<form action="{% url 'home' %}" id="add_post_form" class="add_post_form" method="POST">
-				{% csrf_token %}
-				<div class="form-content">
-					{{ form }}
-				</div>
-				<div class="add_post_btn_container">
-					<input id="add_post_btn" class="add_post_btn" type="submit" value="Post">
-				</div>
-			</form>
+<div id="Newsfeed" class="tabcontent">
+	<div id="News" class="news">
+		<form action="{% url 'home' %}" id="add_post_form" class="add_post_form" method="POST">
+			{% csrf_token %}
+			<div class="form-content">
+				{{ form }}
+			</div>
+			<div class="add_post_btn_container">
+				<input id="add_post_btn" class="add_post_btn" type="submit" value="Post">
+			</div>
+		</form>
 
-			<div class="newsfeed_and_poll_posts">
-				{% for post in post_list %}
-					<div class="newsfeed_and_poll_post">
+		<div class="newsfeed_and_poll_posts">
+			{% for post in post_list %}
+				<div class="newsfeed_and_poll_post">
+					<div class="newsfeed_and_poll_post_header">
+						<h5>On {{ post.published_date }} <span style="font-weight: bold">{{ post.author }}</span> said:</h5>
+					</div>
+					<div class="newsfeed_and_poll_post_content">
+						<p class="wrapword">{{post.text}}</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div id="Polls" class="polls">
+		<div class="newsfeed_and_poll_posts">
+			{% for poll_question, poll_choices in poll_dict.items %}
+				{% if poll_question in freezed_questions %}
+				<form class="newsfeed_and_poll_post" method="POST">
+					<fieldset disabled>
+						{% csrf_token %}
 						<div class="newsfeed_and_poll_post_header">
-							<h5>On {{ post.published_date }} <span style="font-weight: bold">{{ post.author }}</span> said:</h5>
+							<h5>
+								Until <span style="font-weight: bold">{{ poll_question.due_date }}</span> you should answer to the following poll:
+							</h5>
 						</div>
 						<div class="newsfeed_and_poll_post_content">
-							<p class="wrapword">{{post.text}}</p>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-
-		<div id="Polls" class="polls">
-			<div class="newsfeed_and_poll_posts">
-				{% for poll_question, poll_choices in poll_dict.items %}
-					{% if poll_question in freezed_questions %}
-					<form class="newsfeed_and_poll_post" method="POST">
-						<fieldset disabled>
-							{% csrf_token %}
-							<div class="newsfeed_and_poll_post_header">
-								<h5>
-									Until <span style="font-weight: bold">{{ poll_question.due_date }}</span> you should answer to the following poll:
-								</h5>
-							</div>
-							<div class="newsfeed_and_poll_post_content">
-								<p class="wrapword">{{poll_question.question_text}}</p>
-								<div class="poll_choices">
-									{% for choice in poll_choices %}
-										{% if choice in voted_choices %}
-											<input type="radio" name="choice" value="{{choice.id}}" checked>
-											<span style="font-weight: bold">
-												<span class="choice_text">
-													{{choice.text}}
-												</span>
-												<span style="float: right" class="choice_procent">
-													{{choice.number_of_votes|div:number_of_users|mul:100}}%
-												</span>
-											</span>
-											<br>
-										{% else %}
-											<input type="radio" name="choice" value="{{choice.id}}">
+							<p class="wrapword">{{poll_question.question_text}}</p>
+							<div class="poll_choices">
+								{% for choice in poll_choices %}
+									{% if choice in voted_choices %}
+										<input type="radio" name="choice" value="{{choice.id}}" checked>
+										<span style="font-weight: bold">
 											<span class="choice_text">
 												{{choice.text}}
 											</span>
 											<span style="float: right" class="choice_procent">
 												{{choice.number_of_votes|div:number_of_users|mul:100}}%
 											</span>
-											<br>
-										{% endif %}
+										</span>
+										<br>
+									{% else %}
+										<input type="radio" name="choice" value="{{choice.id}}">
+										<span class="choice_text">
+											{{choice.text}}
+										</span>
+										<span style="float: right" class="choice_procent">
+											{{choice.number_of_votes|div:number_of_users|mul:100}}%
+										</span>
+										<br>
+									{% endif %}
+								{% endfor %}
+							</div>
+						</div>
+					</fieldset>
+				</form>
+				{% else %}
+					<form class="newsfeed_and_poll_post" method="POST">
+						{% csrf_token %}
+						<div class="newsfeed_and_poll_post_header">
+							<h5>
+								Until <span style="font-weight: bold">{{ poll_question.due_date }}</span> you should answer to the following poll:
+							</h5>
+						</div>
+						<div class="newsfeed_and_poll_post_content">
+							<p class="wrapword">{{poll_question.question_text}}</p>
+							<div class="poll_choices_container">
+								<div class="poll_choices">
+									{% for choice in poll_choices %}
+										<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}}
+										<br>
 									{% endfor %}
 								</div>
-							</div>
-						</fieldset>
-					</form>
-					{% else %}
-						<form class="newsfeed_and_poll_post" method="POST">
-							{% csrf_token %}
-							<div class="newsfeed_and_poll_post_header">
-								<h5>
-									Until <span style="font-weight: bold">{{ poll_question.due_date }}</span> you should answer to the following poll:
-								</h5>
-							</div>
-							<div class="newsfeed_and_poll_post_content">
-								<p class="wrapword">{{poll_question.question_text}}</p>
-								<div class="poll_choices_container">
-									<div class="poll_choices">
-										{% for choice in poll_choices %}
-											<input type="radio" name="choice" value="{{choice.id}}"> {{choice.text}}
-											<br>
-										{% endfor %}
-									</div>
-									<div class="poll_vote_btn_format">
-										<input class="poll_vote_btn" type="submit" name="submit_poll_answer" value="Vote">
-									</div>
+								<div class="poll_vote_btn_format">
+									<input class="poll_vote_btn" type="submit" name="submit_poll_answer" value="Vote">
 								</div>
 							</div>
-						</form>
-					{% endif %}
-				{% endfor %}
-			</div>
+						</div>
+					</form>
+				{% endif %}
+			{% endfor %}
 		</div>
-
-		<br style="clear:both;"/>
 	</div>
-	<script type="text/javascript">
-		$('#add_post_btn').mousedown(function(e){
-    	    e.preventDefault();
-    	});
-		$("textarea[name='text']").focus(function(){
-    		$(this).attr('rows',3);
-    		$("#add_post_btn").show();
-  			}).blur(function(){
-  				$(this).val('');
-				$(this).attr('rows',1);
-				$("#add_post_btn").hide();
-  			});
-	</script>
-</p>
+</div>
+<script type="text/javascript">
+	$('#add_post_btn').mousedown(function(e){
+	    e.preventDefault();
+	});
+	$("textarea[name='text']").focus(function(){
+		$(this).attr('rows',3);
+		$("#add_post_btn").show();
+			}).blur(function(){
+				$(this).val('');
+			$(this).attr('rows',1);
+			$("#add_post_btn").hide();
+			});
+</script>
