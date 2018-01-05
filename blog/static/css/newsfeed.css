@@ -4,11 +4,6 @@
 	height: 75%;
 	top: 0%;
 	left: 0%;
-	border:none;
-	min-width: 0%;
-	min-height: 50%;
-	max-width:50%;
-    max-height:100%;
     display: flex;
     flex-direction: column;
     float: left;
@@ -20,39 +15,44 @@
 	top: 0%;
 	left: 0%;
 	border:none;
-	min-width: 0%;
-	min-height: 50%;
-	max-width:50%;
-    max-height:100%;
     display: flex;
     flex-direction: column;
 }
 
 .newsfeed_posts {
 	flex-grow: 2;
-	display: flex-block;
+	display: flex;
     flex-direction: column;
-    margin-top: 2%;
+    align-items: center;
+	margin-top: 2%;
 	overflow-y: scroll;
 }
 
 .newsfeed_post {
-	border: solid 1% black;
-	background-color: white;
-	align-items: center;
+	border: 1px solid #004C8C;
+	border-top-left-radius: 10px;
 	font-size: 70%;
 	top: 5%;
-	padding: 1% 2%;
-	margin: 1% 0;
+	margin: 2% 0;
 	width: 90%;
 }
 
 .post_header {
-	text-align: center;
+	padding: 1% 0;
+	background-color: #004C8C;
+	border-top-left-radius: 10px;
+}
+
+.post_header h5 {
+	margin: 0;
+	margin-left: 5%;
+	text-align: left;
+	color: #E8EAF6;
 }
 
 .post_content {
-	text-align: center;
+	text-align: left;
+	margin-left: 2.5%;
 }
 
 .poll_posts {
