@@ -6,56 +6,46 @@ from .models import PollQuestion, PollChoice
 from .models import Key, User, ImportantDate, OtherImportantContact
 
 class UserCreationFormExtended(UserCreationForm):
-    """A form for creating new users. Includes all the required
-    fields, plus a repeated password."""
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
+	"""A form for creating new users. Includes all the required
+	fields, plus a repeated password."""
+	password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+	password2 = forms.CharField(label='Password confirmation', widget=forms.PasswordInput)
 
-    class Meta:
-        model = User
-        fields = ('username', 'password1', 'password2')
+	class Meta:
+		model = User
+		fields = ('username', 'password1', 'password2')
 
-    def clean_password2(self):
-        # Check that the two password entries match
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords don't match")
-        return password2
+	def clean_password2(self):
+		# Check that the two password entries match
+		password1 = self.cleaned_data.get("password1")
+		password2 = self.cleaned_data.get("password2")
+		if password1 and password2 and password1 != password2:
+			raise forms.ValidationError("Passwords don't match")
+		return password2
 
-    def save(self, commit=True):
-        # Save the provided password in hashed format
-        user = super(UserCreationForm, self).save(commit=False)
-        user.set_password(self.cleaned_data["password1"])
-        if commit:
-        	user.save()
-        return user
-
-# class UserChangeFormExtended(UserChangeForm):
-
-#     def __init__(self, *args, **kwargs):
-#         super(UserChangeFormExtended, self).__init__(*args, **kwargs)
-#         self.fields['payed_amount'].required = True
-
+	def save(self, commit=True):
+		# Save the provided password in hashed format
+		user = super(UserCreationForm, self).save(commit=False)
+		user.set_password(self.cleaned_data["password1"])
+		if commit:
+			user.save()
+		return user
 
 class CustomUserAdmin(UserAdmin):
 	model = User
-	list_display = UserAdmin.list_display + ('phone_number', 'is_president', 'is_in_executive_committee', 'is_administrator',)
-	add_form = UserCreationFormExtended
-	# form = UserChangeFormExtended
+    add_form = UserCreationFormExtended
+    list_display = UserAdmin.list_display + ('phone_number', 'is_president', 'is_in_executive_committee', 'is_administrator',)
+
 	add_fieldsets = (
-    	(None, {
-        	'classes': ('wide',),
-        	'fields': ('username', 'password1', 'password2', 'no_of_persons', 'surface_factor', 'payed_amount', 'phone_number', 'email', 'is_president', 'is_in_executive_committee', 'is_administrator', )
-    	}),
+		(None, {
+			'classes': ('wide',),
+			'fields': ('username', 'password1', 'password2', 'no_of_persons', 'surface_factor', 'payed_amount', 'phone_number', 'email', 'is_president', 'is_in_executive_committee', 'is_administrator', )
+		}),
 	)
-    fieldsets = (
-        (None, {
-            }),
-    )
+	fieldsets = UserAdmin.fieldsets + ((None, {'fields': ('some_extra_data',)}),)
 
 class KeyAdmin(admin.ModelAdmin):
-    fields = ('name','owner')
+	fields = ('name','owner')
 
 class PollChoiceInline(admin.TabularInline):
 	model = PollChoice
