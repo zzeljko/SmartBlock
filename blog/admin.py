@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.admin import UserAdmin
 from django import forms
 from .models import PollQuestion, PollChoice
@@ -31,17 +31,28 @@ class UserCreationFormExtended(UserCreationForm):
         	user.save()
         return user
 
+# class UserChangeFormExtended(UserChangeForm):
+
+#     def __init__(self, *args, **kwargs):
+#         super(UserChangeFormExtended, self).__init__(*args, **kwargs)
+#         self.fields['payed_amount'].required = True
+
+
 class CustomUserAdmin(UserAdmin):
 	model = User
 	list_display = UserAdmin.list_display + ('phone_number', 'is_president', 'is_in_executive_committee', 'is_administrator',)
 	add_form = UserCreationFormExtended
-	# form = None
+	# form = UserChangeFormExtended
 	add_fieldsets = (
     	(None, {
         	'classes': ('wide',),
-        	'fields': ('username', 'password1', 'password2' ,'is_president', 'is_in_executive_committee', 'is_administrator', 'phone_number',)
+        	'fields': ('username', 'password1', 'password2', 'no_of_persons', 'surface_factor', 'payed_amount', 'phone_number', 'email', 'is_president', 'is_in_executive_committee', 'is_administrator', )
     	}),
 	)
+    fieldsets = (
+        (None, {
+            }),
+    )
 
 class KeyAdmin(admin.ModelAdmin):
     fields = ('name','owner')
