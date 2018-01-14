@@ -5,6 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.core.validators import RegexValidator, EmailValidator
 from django.contrib.auth.models import AbstractUser
+import datetime as dt
+from datetime import datetime
 
 class IntegerRangeField(models.IntegerField):
     def __init__(self, verbose_name=None, name=None, min_value=None, max_value=None, **kwargs):
@@ -79,6 +81,32 @@ class ImportantDate(models.Model):
 
     def __str__(self):
         return self.description
+
+class CommonBill(models.Model):
+
+    def monthdelta(date, delta):
+        
+        m, y = (date.month+delta) % 12, date.year + ((date.month)+delta-1) // 12
+        if not m: m = 12
+        d = min(date.day, [31,
+            29 if y%4==0 and not y%400==0 else 28,31,30,31,30,31,31,30,31,30,31][m-1])
+        return date.replace(day=d,month=m, year=y)
+
+    date = models.DateField(default=monthdelta(datetime.now().date(), -1))
+    gaze = models.FloatField(default=0)
+    incalzire_curenta = models.FloatField(default=0)
+    apa_calda = models.FloatField(default=0)
+    apa_rece = models.FloatField(default=0)
+    energie_electrica_parti_comune = models.FloatField(default=0)
+    intretinere_interfon = models.FloatField(default=0)
+    intretinere_lift = models.FloatField(default=0)
+    deseuri_menajere = models.FloatField(default=0)
+    intretinere_interfon = models.FloatField(default=0)
+    salarii_bloc = models.FloatField(default=0)
+    cheltuieli_neprevazute = models.FloatField(default=0)
+
+    def __str__(self):
+        return "Monthly Bill " + str(self.date)
 
 class OtherImportantContact(models.Model):
     description = models.CharField(max_length=30)
