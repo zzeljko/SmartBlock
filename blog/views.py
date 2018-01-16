@@ -56,10 +56,6 @@ def home_page(request):
 
 			User.objects.filter(username=request.user.username).update(index_curent_apa_rece = new_cold_index)
 			User.objects.filter(username=request.user.username).update(index_curent_apa_calda = new_hot_index)
-			try:
-				print IntrariIntretinere.objects.filter(user=request.user)
-			except:
-			 	# insert here USERS in tabela intretinere
 
 	form = NewsPostForm()
 	keys_list = Key.objects.all()
