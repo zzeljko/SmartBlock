@@ -11,12 +11,24 @@
 			</label>
 			<input type="submit" value="Submit">
 		</form>
+		<div class="utilities_table">
+				<table>
+					{% include 'blog/utilities_header.html' %}
+					{% if not current_common_bill == None %}
+						{% for user_line in last_utility_table %}
+							{% if request.user == user_line.user %}
+								<tr style="font-weight:bold">
+									{% include 'blog/utilities_container.html' %}
+								</tr>
+							{% else %}
+								<tr>
+									{% include 'blog/utilities_container.html' %}
+								</tr>
+							{% endif %}
+						{% endfor %}
+						{% include 'blog/utilities_totals.html' %}
+					{% endif %}
+				</table>
+		</div>
 	</div>
-	<table class="utilities_table">
-		{% include 'blog/utilities_header.html' %}
-		{% for user_line in last_utility_table %}
-			{% include 'blog/utilities_container.html' %}
-		{% endfor %}
-		{% include 'blog/utilities_totals.html' %}
-	</table> 
 </div>

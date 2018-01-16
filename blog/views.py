@@ -70,6 +70,9 @@ def home_page(request):
 
 	users = User.objects.all().filter(is_staff=False)
 	common_bills = CommonBill.objects.all().order_by('date').reverse()
+	for bill in common_bills:
+		print bill.date
+		
 	intrari_intretinere = IntrariIntretinere.objects.all()
 	if len(intrari_intretinere) < len(common_bills) * len(users):
 
@@ -170,16 +173,18 @@ def home_page(request):
 	important_dates = ImportantDate.objects.all()
 	other_important_contacts = OtherImportantContact.objects.all()
 
-	total_luna_curenta_to_send = common_bills[0].apa_rece + common_bills[0].apa_calda + common_bills[0].gaze \
-	+ common_bills[0].energie_electrica_parti_comune + common_bills[0].intretinere_interfon \
-	+ common_bills[0].deseuri_menajere + common_bills[0].salarii_bloc + common_bills[0].incalzire_curenta \
-	+ common_bills[0].intretinere_lift + common_bills[0].cheltuieli_neprevazute
-
+	total_luna_curenta_to_send = 0 
 	total_debt_to_send = 0
 	total_total_to_send = 0
 	for user in users:
 		total_debt_to_send += user.debt
 		total_total_to_send += user.total_to_pay
+		total_luna_curenta_to_send += user.month_to_pay
+
+	if len(common_bills) > 0:
+		current_common_bill = common_bills[0]
+	else:
+		current_common_bill = None
 
 	return render(request, 'blog/home.html', {'form' : form,
 		'post_list' : post_list, 'poll_dict' : poll_dict, 'keys_list' : keys_list, 
@@ -190,7 +195,7 @@ def home_page(request):
 		'utilities_table_no_of_lines' : xrange(0,utilities_table_no_of_lines), 
 		'last_utility_table' : last_utility_table,
 		'total_pers_to_send' : total_pers_to_send,
-		'current_common_bill' : common_bills[0],
+		'current_common_bill' : current_common_bill,
 		'total_luna_curenta_to_send' : total_luna_curenta_to_send,
 		'total_debt_to_send' : total_debt_to_send,
 		'total_total_to_send' : total_total_to_send})
