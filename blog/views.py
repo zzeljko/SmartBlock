@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import NewsPostForm
-from .models import NewsPost, Key, PollQuestion, PollChoice, Vote, ImportantDate, OtherImportantContact
+from .models import NewsPost, Key, PollQuestion, PollChoice, Vote, ImportantDate, OtherImportantContact, IntrariIntretinere
 from django.shortcuts import render
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -17,7 +17,7 @@ def home_page(request):
 		return HttpResponseRedirect('/')
 
 	form_class = NewsPostForm
-    # if request is not post, initialize an empty form
+	# if request is not post, initialize an empty form
 	form = form_class(request.POST or None)
 	
 	""" Form logic for registering a new post """
@@ -36,19 +36,30 @@ def home_page(request):
 					Key.objects.filter(name=query[0]).update(owner = request.user)
 
 		form = NewsPostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
+		if form.is_valid():
+			post = form.save(commit=False)
+			post.author = request.user
+			post.published_date = timezone.now()
+			post.save()
 
-        if 'choice' in request.POST:
+		if 'choice' in request.POST:
 			choice_id = request.POST['choice']
 			choices = PollChoice.objects.filter(pk=choice_id)
 			choice = choices[0]
 			if not Vote.objects.all().filter(poll_choice=choice, user=request.user):
 				choices.update(number_of_votes=F('number_of_votes')+1)
 				Vote.objects.create(poll_choice=choice, user=request.user)
+
+		if 'water_index_cold' and 'water_index_hot' in request.POST:
+			new_cold_index = request.POST['water_index_cold']
+			new_hot_index = request.POST['water_index_hot']
+
+			User.objects.filter(username=request.user.username).update(index_curent_apa_rece = new_cold_index)
+			User.objects.filter(username=request.user.username).update(index_curent_apa_calda = new_hot_index)
+			try:
+				print IntrariIntretinere.objects.filter(user=request.user)
+			except:
+			 	# insert here USERS in tabela intretinere
 
 	form = NewsPostForm()
 	keys_list = Key.objects.all()
@@ -72,6 +83,8 @@ def home_page(request):
 
 	important_dates = ImportantDate.objects.all()
 	other_important_contacts = OtherImportantContact.objects.all()
+	
+	### TODO COMPLETE IntrariIntretinere ###
 
 	return render(request, 'blog/home.html', {'form' : form,
 		'post_list' : post_list, 'poll_dict' : poll_dict, 'keys_list' : keys_list, 

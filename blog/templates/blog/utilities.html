@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="../../static/css/utilities.css">
+<div id="Utilities" class="tabcontent">
+	<div class="utilities-contents">
+		<form method="POST">
+			{% csrf_token %}
+			<label for="apa_rece"> Apa Rece:
+				<input id="apa_rece" type="number" step="0.001" name="water_index_cold">
+			</label>
+			<label for="apa_calda"> Apa Calda:
+				<input id="apa_calda" type="number" step="0.001" name="water_index_hot">
+			</label>
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</div>
