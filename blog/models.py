@@ -32,8 +32,9 @@ class User(AbstractUser):
     total_to_pay = models.FloatField(default=0.0, null=False, validators = [MinValueValidator(0.0)])
     index_vechi_apa_rece = models.FloatField(default=0.0, null=True, validators = [MinValueValidator(0.0)])
     index_vechi_apa_calda = models.FloatField(default=0.0, null=False, validators = [MinValueValidator(0.0)])
-    index_curent_apa_rece = models.FloatField(default=0.0, null=False, validators = [MinValueValidator(0.0)])
-    index_curent_apa_calda = models.FloatField(default=0.0, null=False, validators = [MinValueValidator(0.0)])
+    consum_apa_rece = models.FloatField(default=0.0, null=False, validators = [MinValueValidator(0.0)])
+    consum_apa_calda = models.FloatField(default=0.0, null=False, validators = [MinValueValidator(0.0)])
+    declared_water = models.BooleanField(default=False)
 
 class NewsPost(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL)
@@ -81,7 +82,8 @@ class Vote(models.Model):
 
 class ImportantDate(models.Model):
     description = models.CharField(max_length=30)
-    monthly_due_date = IntegerRangeField(min_value=1, max_value=31,default=1)
+    monthly_due_date_start = IntegerRangeField(min_value=1, max_value=31,default=1)
+    monthly_due_date_stop = IntegerRangeField(min_value=monthly_due_date_start, max_value=31,default=1)
 
     def __str__(self):
         return self.description
