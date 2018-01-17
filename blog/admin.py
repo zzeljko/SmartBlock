@@ -42,13 +42,13 @@ class CustomUserAdmin(UserAdmin):
 	add_fieldsets = (
 		(None, {
 			'classes': ('wide',),
-			'fields': ('username', 'password1', 'password2', 'no_of_persons', 'surface_factor', 'payed_amount', 'index_vechi_apa_rece', 'index_vechi_apa_calda', 'phone_number', 'email', ('is_president', 'is_in_executive_committee', 'is_administrator'), )
+			'fields': ('username', 'password1', 'password2', 'no_of_persons', 'surface_factor', ('month_to_pay', 'debt', 'total_to_pay', 'payed_amount'), 'index_vechi_apa_rece', 'index_vechi_apa_calda', 'phone_number', 'email', ('is_president', 'is_in_executive_committee', 'is_administrator'), )
 			}),
 		)
 	form = UserChangeFormExtended
 	fieldsets = (
 		(None, {
-			'fields': ('no_of_persons', 'surface_factor', 'payed_amount', 'index_vechi_apa_rece', 'index_vechi_apa_calda', 'phone_number', ('is_president', 'is_in_executive_committee', 'is_administrator'), )
+			'fields': ('no_of_persons', 'surface_factor', ('month_to_pay', 'debt', 'total_to_pay', 'payed_amount'), 'index_vechi_apa_rece', 'index_vechi_apa_calda', 'phone_number', ('is_president', 'is_in_executive_committee', 'is_administrator'), )
 			}),
 		) + UserAdmin.fieldsets
 
