@@ -10,9 +10,11 @@
 }
 
 .popupContent h1 {
-	font-size: 80%;
+	font-size: 100%;
 	margin: 0;
 	padding: 0;
+	color: #004C8C;
+	font-weight: bold;
 }
 
 .popupContent .profileForm {
@@ -26,11 +28,37 @@
 	font-size: 70%;
 }
 
-.popupContent .keyProfile input {
-	width: 20%;
+.popupContent .keyProfile h1 {
+	display: inline;
+	font-size: 140%;
+	width: 30%;
+	color: #004C8C;
+	margin-right: 10px;
 }
 
 .popupContent .keyProfile select {
+	color: #004C8C;
+	display: inline;
 	height: 10%;
 	font-size: 120%;
+}
+
+.save_keys_btn {
+	position: relative;
+	font-size: 100%;
+	color: #0277BD;
+	margin: 1% auto;
+	background-color: #BBDEFB;
+	border: 1px solid #004C8C;
+	border-radius: 15%;
+	padding: 0.5% 1.5%;
+}
+
+.save_keys_btn:hover {
+	color: #E8EAF6;
+	background-color: #004C8C;
+}
+
+.save_keys_btn:active {
+	font-size: 95%;
 }

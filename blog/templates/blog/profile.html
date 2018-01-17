@@ -6,7 +6,8 @@
 		{% csrf_token %}
 		{% for key in keys_list %}
 			<div class="keyProfile">
-				<input type="text" value="{{ key.name }}" disabled="True">
+				<!-- <input type="text" value="{{ key.name }}" disabled="True"> -->
+				<h1>{{ key.name }} : </h1>
 				<select name="keyset">
 					{% if key.owner == user %}
 						{% if key.is_used %}
@@ -27,6 +28,6 @@
 			</div>
 		{% endfor %}
     	<!-- {{ form_my_profile.name }} -->
-    	<input type="submit" value="Save"/>
+    	<input class="save_keys_btn" type="submit" value="Save"/>
 	</form>
 </div>
